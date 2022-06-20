@@ -16,13 +16,19 @@ const SafeArea = styled(SafeAreaView)`
   background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
+const RestaurantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
+
 export const RestaurantsScreen = () => {
   return (
     <SafeArea>
       <SearchContainer>
         <Searchbar placeholder="Search" />
       </SearchContainer>
-      <FlatList
+      <RestaurantList
         data={[{ name: 1 }, { name: 2 }, { name: 3 }]}
         renderItem={() => (
           <Spacer position="bottom" size="large">
@@ -30,8 +36,6 @@ export const RestaurantsScreen = () => {
           </Spacer>
         )}
         keyExtractor={(item) => item.name}
-        // eslint-disable-next-line react-native/no-inline-styles
-        contentContainerStyle={{ padding: 16 }}
       />
     </SafeArea>
   );
